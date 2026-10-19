@@ -4,5 +4,5 @@ namespace _05_Garage;
 
 public class Car : Vehicle
 {
-
+    public string FuelType { get; set; }
 }
