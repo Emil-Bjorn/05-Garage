@@ -10,6 +10,6 @@ public class Garage
     public Garage(int capacity)
     {
         Capacity = capacity;
-        Data = Vehicle[capacity];
+        Data = new Vehicle[capacity];
     }
 }
