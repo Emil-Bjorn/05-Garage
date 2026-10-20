@@ -25,4 +25,19 @@ public class Garage
             throw new InvalidOperationException("Error: No free space in garage.");
         }
     }
+    public Vehicle? findVehicleByRegistrationNumber(string registrationNumber)
+    {
+        foreach (Vehicle vehicle in Data)
+        {
+            if (vehicle.RegistrationNumber == registrationNumber)
+            {
+                return vehicle;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        return null;
+    }
 }
