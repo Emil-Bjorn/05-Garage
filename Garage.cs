@@ -4,7 +4,7 @@ namespace _05_Garage;
 
 public class Garage
 {
-    public Vehicle[] Data { get; set; }
+    public Vehicle?[] Data { get; set; }
     public int Capacity { get; set; }
 
     public Garage(int capacity)
@@ -25,20 +25,31 @@ public class Garage
             throw new InvalidOperationException("Error: No free space in garage.");
         }
     }
-    public Vehicle? findVehicleByRegistrationNumber(string registrationNumber)
+
+    public bool RemoveVehicle(string registrationNumber)
+    {
+        findVehicleByRegistrationNumber(registrationNumber, out int index);
+        if (index != -1)
+        {
+            Data[index] = null;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public Vehicle? findVehicleByRegistrationNumber(string registrationNumber, out int index)
     {
         index = -1;
         for (int i = 0; i < Data.Length; i++)
         {
-            if (Data[i].RegistrationNumber == registrationNumber)
+            Vehicle? vehicle = Data[i];
+            if (vehicle != null && vehicle.RegistrationNumber == registrationNumber)
             {
                 index = i;
-                return Data[i];
-            }
-            else
-            {
-                return null;
+                return vehicle;
             }
         }
         return null;
