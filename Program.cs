@@ -72,15 +72,22 @@ class Program
                         }
                         else
                         {
-                            switch (vehicleType)
+                            try
                             {
-                                case "1":
-                                    break;
-                                case "6":
-                                    garage.AddVehicle(
-                                        new Vehicle(registrationNumber, color, numberOfWheels)
-                                    );
-                                    break;
+                                switch (vehicleType)
+                                {
+                                    case "1":
+                                        break;
+                                    case "6":
+                                        garage.AddVehicle(
+                                            new Vehicle(registrationNumber, color, numberOfWheels)
+                                        );
+                                        break;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
                             }
                         }
                     }
