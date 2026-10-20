@@ -171,6 +171,25 @@ class Program
                                             );
                                         }
                                         break;
+                                    case "5":
+                                        Console.WriteLine("Please input number of engines: ");
+                                        if (
+                                            int.TryParse(
+                                                Console.ReadLine(),
+                                                out int numberOfEngines
+                                            )
+                                        )
+                                        {
+                                            garage.AddVehicle(
+                                                new Airplane(
+                                                    registrationNumber,
+                                                    color,
+                                                    numberOfWheels,
+                                                    numberOfEngines
+                                                )
+                                            );
+                                        }
+                                        break;
                                     case "6":
                                         garage.AddVehicle(
                                             new Vehicle(registrationNumber, color, numberOfWheels)
