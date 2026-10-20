@@ -58,7 +58,13 @@ public class Garage
         for (int i = 0; i < Data.Length; i++)
         {
             Vehicle? vehicle = Data[i];
-            if (vehicle != null && vehicle.RegistrationNumber == registrationNumber)
+            if (
+                vehicle != null
+                && vehicle.RegistrationNumber.Equals(
+                    registrationNumber,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            )
             {
                 index = i;
                 return vehicle;
