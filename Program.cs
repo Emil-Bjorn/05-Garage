@@ -14,6 +14,7 @@ class Program
             Console.WriteLine("1. Create new garage.");
             Console.WriteLine("2. Add new vehicle");
             Console.WriteLine("3. List all parked vehicles");
+            Console.WriteLine("4. Remove vehicle");
             Console.Write("Please input a command: ");
             string? cmd = Console.ReadLine();
             switch (cmd)
@@ -220,7 +221,7 @@ class Program
                 case "3":
                     if (garage != null)
                     {
-                        foreach (Vehicle vehicle in garage.Data)
+                        foreach (Vehicle? vehicle in garage.Data)
                         {
                             if (vehicle != null)
                             {
@@ -229,6 +230,33 @@ class Program
                         }
                     }
                     break;
+                case "4":
+                {
+                    Console.Write(
+                        "Please provide the registration number for the vehicle you would like to remove: "
+                    );
+                    string? registrationNumber = Console.ReadLine();
+                    if (registrationNumber != null && garage != null)
+                    {
+                        if (garage.RemoveVehicle(registrationNumber))
+                        {
+                            Console.WriteLine("Vehicle successfully removed.");
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "Vehicle with provided registration number not found."
+                            );
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine(
+                            "Error: Please ensure garage is initialized and registration number are provided correctly."
+                        );
+                    }
+                    break;
+                }
             }
         }
     }
