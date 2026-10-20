@@ -151,6 +151,26 @@ class Program
                                             );
                                         }
                                         break;
+                                    case "4":
+                                        Console.Write("Please input length in meters: ");
+                                        if (double.TryParse(Console.ReadLine(), out double length))
+                                        {
+                                            garage.AddVehicle(
+                                                new Boat(
+                                                    registrationNumber,
+                                                    color,
+                                                    numberOfWheels,
+                                                    length
+                                                )
+                                            );
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(
+                                                "Error: Please input a valid length."
+                                            );
+                                        }
+                                        break;
                                     case "6":
                                         garage.AddVehicle(
                                             new Vehicle(registrationNumber, color, numberOfWheels)
