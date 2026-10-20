@@ -98,6 +98,38 @@ class Program
                                         }
                                         break;
                                     case "2":
+                                        Console.Write(
+                                            "Does the motorcycle have a sidecar attached?(y/n): "
+                                        );
+                                        string? hasSidecar = Console.ReadLine();
+                                        switch (hasSidecar)
+                                        {
+                                            case "y":
+                                                garage.AddVehicle(
+                                                    new Motorcycle(
+                                                        registrationNumber,
+                                                        color,
+                                                        numberOfWheels,
+                                                        true
+                                                    )
+                                                );
+                                                break;
+                                            case "n":
+                                                garage.AddVehicle(
+                                                    new Motorcycle(
+                                                        registrationNumber,
+                                                        color,
+                                                        numberOfWheels,
+                                                        false
+                                                    )
+                                                );
+                                                break;
+                                            default:
+                                                Console.WriteLine(
+                                                    "You must specify whether the motorcycle has a sidecar by writing [y] or [n]."
+                                                );
+                                                break;
+                                        }
                                         break;
                                     case "6":
                                         garage.AddVehicle(
