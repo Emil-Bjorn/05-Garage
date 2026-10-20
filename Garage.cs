@@ -26,6 +26,7 @@ public class Garage
         }
     }
 
+    // Returns true if operation is successful and false if not
     public bool RemoveVehicle(string registrationNumber)
     {
         findVehicleByRegistrationNumber(registrationNumber, out int index);
