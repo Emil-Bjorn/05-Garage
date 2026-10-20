@@ -136,6 +136,11 @@ class Program
                                             new Vehicle(registrationNumber, color, numberOfWheels)
                                         );
                                         break;
+                                    default:
+                                        Console.WriteLine(
+                                            "Error: We did not understand your command. Please select from the available options."
+                                        );
+                                        break;
                                 }
                             }
                             catch (Exception ex)
