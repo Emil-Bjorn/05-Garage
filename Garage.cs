@@ -26,12 +26,15 @@ public class Garage
         }
     }
     public Vehicle? findVehicleByRegistrationNumber(string registrationNumber)
+    public Vehicle? findVehicleByRegistrationNumber(string registrationNumber, out int index)
     {
-        foreach (Vehicle vehicle in Data)
+        index = -1;
+        for (int i = 0; i < Data.Length; i++)
         {
-            if (vehicle.RegistrationNumber == registrationNumber)
+            if (Data[i].RegistrationNumber == registrationNumber)
             {
-                return vehicle;
+                index = i;
+                return Data[i];
             }
             else
             {
