@@ -12,4 +12,17 @@ public class Garage
         Capacity = capacity;
         Data = new Vehicle[capacity];
     }
+
+    public void AddVehicle(Vehicle vehicle)
+    {
+        int emptyIndex = Array.IndexOf(Data, null);
+        if (emptyIndex != -1)
+        {
+            Data[emptyIndex] = vehicle;
+        }
+        else
+        {
+            throw new InvalidOperationException("Error: No free space in garage.");
+        }
+    }
 }
