@@ -13,6 +13,7 @@ class Program
             Console.WriteLine("0. Exit application");
             Console.WriteLine("1. Create new garage.");
             Console.WriteLine("2. Add new vehicle");
+            Console.WriteLine("3. List all parked vehicles");
             Console.Write("Please input a command: ");
             string? cmd = Console.ReadLine();
             switch (cmd)
@@ -216,6 +217,18 @@ class Program
                     }
                     break;
                 }
+                case "3":
+                    if (garage != null)
+                    {
+                        foreach (Vehicle vehicle in garage.Data)
+                        {
+                            if (vehicle != null)
+                            {
+                                Console.WriteLine(vehicle);
+                            }
+                        }
+                    }
+                    break;
             }
         }
     }

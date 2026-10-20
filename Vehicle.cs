@@ -14,4 +14,9 @@ public class Vehicle
         Color = color;
         NumberOfWheels = numberOfWheels;
     }
+
+    public override string ToString()
+    {
+        return $"{RegistrationNumber} - Color: {Color}, Number of wheels: {NumberOfWheels}";
+    }
 }
