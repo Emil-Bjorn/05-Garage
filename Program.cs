@@ -183,7 +183,7 @@ class Program
                                         break;
                                 }
                             }
-                            catch (Exception ex)
+                            catch (InvalidOperationException ex)
                             {
                                 Console.WriteLine(ex.Message);
                             }
