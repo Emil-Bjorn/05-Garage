@@ -77,6 +77,27 @@ class Program
                                 switch (vehicleType)
                                 {
                                     case "1":
+                                        Console.Write("Please input fuel type: ");
+                                        string? fuelType = Console.ReadLine();
+                                        if (fuelType != null)
+                                        {
+                                            garage.AddVehicle(
+                                                new Car(
+                                                    registrationNumber,
+                                                    color,
+                                                    numberOfWheels,
+                                                    fuelType
+                                                )
+                                            );
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(
+                                                "Error: Fuel type type can not be null."
+                                            );
+                                        }
+                                        break;
+                                    case "2":
                                         break;
                                     case "6":
                                         garage.AddVehicle(
