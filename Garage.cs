@@ -15,10 +15,21 @@ public class Garage
 
     public void AddVehicle(Vehicle vehicle)
     {
+        // Find the first index in Data that is empty
         int emptyIndex = Array.IndexOf(Data, null);
+        // If there is an empty index in Data and the registration number is not used by another vehicle, set empty index to provided vehicle
         if (emptyIndex != -1)
         {
-            Data[emptyIndex] = vehicle;
+            if (findVehicleByRegistrationNumber(vehicle.RegistrationNumber, out int index) == null)
+            {
+                Data[emptyIndex] = vehicle;
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    "Error: Vehicle with that registration number already exists"
+                );
+            }
         }
         else
         {
