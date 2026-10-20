@@ -172,7 +172,7 @@ class Program
                                         }
                                         break;
                                     case "5":
-                                        Console.WriteLine("Please input number of engines: ");
+                                        Console.Write("Please input number of engines: ");
                                         if (
                                             int.TryParse(
                                                 Console.ReadLine(),
@@ -187,6 +187,12 @@ class Program
                                                     numberOfWheels,
                                                     numberOfEngines
                                                 )
+                                            );
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(
+                                                "Error: Number of engines must be a whole integer."
                                             );
                                         }
                                         break;
