@@ -131,6 +131,26 @@ class Program
                                                 break;
                                         }
                                         break;
+                                    case "3":
+                                        Console.Write("Please input number of seats: ");
+                                        if (int.TryParse(Console.ReadLine(), out int numberOfSeats))
+                                        {
+                                            garage.AddVehicle(
+                                                new Bus(
+                                                    registrationNumber,
+                                                    color,
+                                                    numberOfWheels,
+                                                    numberOfSeats
+                                                )
+                                            );
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(
+                                                "Error: Number of seats must be a whole integer."
+                                            );
+                                        }
+                                        break;
                                     case "6":
                                         garage.AddVehicle(
                                             new Vehicle(registrationNumber, color, numberOfWheels)
