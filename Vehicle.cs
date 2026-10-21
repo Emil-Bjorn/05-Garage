@@ -17,6 +17,6 @@ public class Vehicle
 
     public override string ToString()
     {
-        return $"{RegistrationNumber} - Color: {Color}, Number of wheels: {NumberOfWheels}";
+        return $"{RegistrationNumber} - {GetType().Name}, Color: {Color}, Number of wheels: {NumberOfWheels}";
     }
 }
