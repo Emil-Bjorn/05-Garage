@@ -266,7 +266,7 @@ class Program
                     Console.WriteLine(
                         "You can use multiple properties together by separating them with a space."
                     );
-                    Console.WriteLine("Ex. registration-abc123 color-red wheels-2");
+                    Console.WriteLine("Ex. registration-abc123 color-red wheels-2 type-motorcycle");
                     Console.WriteLine("Please enter a search");
                     string? search = Console.ReadLine();
                     bool matchFound = false;

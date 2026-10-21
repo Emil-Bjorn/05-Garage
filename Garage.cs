@@ -99,6 +99,7 @@ public class Garage
             {
                 case "registration":
                 case "color":
+                case "type":
                     break;
                 case "wheels":
                     if (!int.TryParse(searchValues[i], out _))
@@ -144,6 +145,13 @@ public class Garage
                         break;
                     case "wheels":
                         isMatch = Data[i].NumberOfWheels == int.Parse(searchValues[j]);
+                        break;
+                    case "type":
+                        isMatch = string.Equals(
+                            Data[i].GetType().Name,
+                            searchValues[j],
+                            StringComparison.OrdinalIgnoreCase
+                        );
                         break;
                 }
             }
