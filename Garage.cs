@@ -22,7 +22,7 @@ public class Garage
         // If there is an empty index in Data and the registration number is not used by another vehicle, set empty index to provided vehicle
         if (emptyIndex != -1)
         {
-            if (findVehicleByRegistrationNumber(vehicle.RegistrationNumber, out int index) == null)
+            if (FindVehicleByRegistrationNumber(vehicle.RegistrationNumber, out int index) == null)
             {
                 Data[emptyIndex] = vehicle;
             }
@@ -42,7 +42,7 @@ public class Garage
     // Returns true if operation is successful and false if not
     public bool RemoveVehicle(string registrationNumber)
     {
-        findVehicleByRegistrationNumber(registrationNumber, out int index);
+        FindVehicleByRegistrationNumber(registrationNumber, out int index);
         if (index != -1)
         {
             Data[index] = null;
@@ -54,7 +54,7 @@ public class Garage
         }
     }
 
-    public Vehicle? findVehicleByRegistrationNumber(string registrationNumber, out int index)
+    public Vehicle? FindVehicleByRegistrationNumber(string registrationNumber, out int index)
     {
         index = -1;
         for (int i = 0; i < Data.Length; i++)
