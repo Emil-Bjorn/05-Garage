@@ -92,6 +92,7 @@ public class Garage
                 );
             }
 
+            // Separate keys and values into separate arrays.
             searchKeys[i] = searchList[i].Substring(0, dashCheck).ToLower();
             searchValues[i] = searchList[i].Substring(dashCheck + 1).ToLower();
 
