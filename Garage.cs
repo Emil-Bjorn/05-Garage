@@ -1,4 +1,6 @@
 using System;
+using System.Data;
+using System.Runtime.ExceptionServices;
 
 namespace _05_Garage;
 
@@ -71,5 +73,90 @@ public class Garage
             }
         }
         return null;
+    }
+
+    public Vehicle[] Search(string search)
+    {
+        string[] searchList = search.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        string[] searchKeys = new string[searchList.Length];
+        string[] searchValues = new string[searchList.Length];
+
+        // Loop through searchList and validate that they are in the correct format
+        for (int i = 0; i < searchList.Length; i++)
+        {
+            int dashCheck = searchList[i].IndexOf('-');
+            if (dashCheck <= 0 || dashCheck == searchList[i].Length - 1)
+            {
+                throw new ArgumentException(
+                    $"Error: Invalid search '{searchList[i]}'. Please use key-value format."
+                );
+            }
+
+            searchKeys[i] = searchList[i].Substring(0, dashCheck).ToLower();
+            searchValues[i] = searchList[i].Substring(dashCheck + 1).ToLower();
+
+            switch (searchKeys[i])
+            {
+                case "registration":
+                case "color":
+                    break;
+                case "wheels":
+                    if (!int.TryParse(searchValues[i], out _))
+                    {
+                        throw new ArgumentException(
+                            $"Error: '{searchValues[i]}' is not a valid number of wheels."
+                        );
+                    }
+                    break;
+                default:
+                    throw new ArgumentException($"Error: Unknown search term {searchKeys[i]}");
+            }
+        }
+
+        // Loop through Data and add them to searchMatches if they match all search parameters.
+        // Create new vehicle array to store search matches.
+        Vehicle[] searchMatches = new Vehicle[Data.Length];
+        int matchCount = 0;
+
+        for (int i = 0; i < Data.Length; i++)
+        {
+            if (Data[i] == null)
+                continue;
+
+            bool isMatch = true;
+            for (int j = 0; j < searchKeys.Length && isMatch; j++)
+            {
+                switch (searchKeys[j])
+                {
+                    case "registration":
+                        isMatch = string.Equals(
+                            Data[i].RegistrationNumber,
+                            searchValues[j],
+                            StringComparison.OrdinalIgnoreCase
+                        );
+                        break;
+                    case "color":
+                        isMatch = string.Equals(
+                            Data[i].Color,
+                            searchValues[j],
+                            StringComparison.OrdinalIgnoreCase
+                        );
+                        break;
+                    case "wheels":
+                        isMatch = Data[i].NumberOfWheels == int.Parse(searchValues[j]);
+                        break;
+                }
+            }
+
+            if (isMatch)
+            {
+                searchMatches[matchCount] = Data[i];
+                matchCount++;
+            }
+        }
+
+        // Remove empty slots in searchMatches array
+        Array.Resize(ref searchMatches, matchCount);
+        return searchMatches;
     }
 }
