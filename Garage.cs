@@ -106,6 +106,7 @@ public class Garage
                 case "type":
                     break;
                 case "wheels":
+                    // Don't need the actual number of wheels for now, just checking to see if it is a valid int.
                     if (!int.TryParse(searchValues[i], out _))
                     {
                         throw new ArgumentException(
