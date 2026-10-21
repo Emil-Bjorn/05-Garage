@@ -75,6 +75,9 @@ public class Garage
         return null;
     }
 
+    // Takes a string of search queries separated by spaces and formatted as key-value pairs.
+    // Loops through each vehicle in garage and each key-value search to identify if the vehicle is a match
+    // If it is a match add it to a new array which is returned by the funciton.
     public Vehicle[] Search(string search)
     {
         string[] searchList = search.Split(' ', StringSplitOptions.RemoveEmptyEntries);
